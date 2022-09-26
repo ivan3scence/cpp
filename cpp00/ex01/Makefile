@@ -6,9 +6,37 @@ NAME = phone_book
 
 SRC = Contact.cpp PhoneBook.cpp main.cpp
 
-INCLUDES = Contract.hpp PhoneBook.hpp
+SRC_DIR = ./src/
 
-all:	${NAME}
+INC_DIR = ./include/
 
-${NAME}:	${SRC}
-	${CC} ${FLAGS} -I ${INCLUDES} $? -o $@
+INC = Contract.hpp PhoneBook.hpp
+
+SOURCES = $(addprefix ${SRC_DIR}, ${SRC})
+
+INCLUDES = $(addprefix ${INC_DIR}, ${INC})
+
+BUILDIR = ./obj/
+
+OBJS = ${SRC:.cpp=.o}
+
+REMOVE = rm -rf
+
+all:	${BUILDIR} ${NAME}
+
+${NAME}:	${SOURCES}
+	${CC} ${FLAGS} -I ${INC_DIR} $? -o $@
+
+${BUILDIR}:
+	mkdir $@
+
+%.o:	%.cpp ${INCLUDES} Makefile
+	${CC} ${FLAGS} -I ${INC_DIR} -c $< -o $@
+
+clean:
+	${REMOVE} ${OBJS}
+	
+fclean:	clean
+	${REMOVE} ${NAME}
+
+re: fclean all

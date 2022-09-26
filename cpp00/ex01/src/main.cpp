@@ -1,4 +1,5 @@
 #include "PhoneBook.hpp"
+#include "Contact.hpp"
 
 int main(void)
 {
@@ -15,5 +16,7 @@ int main(void)
 			book.search();
 		else if (line == "EXIT")
 			std::exit(0);
+		else
+			std::cout << "program knows only:\n\tADD\n\tSEARCH\n\tEXIT\n";
 	}
 }

@@ -4,20 +4,21 @@
 # include <string>
 # include <iostream>
 # include <cstdlib>
+# include <sstream>
 
 # include "Contact.hpp"
 
-# define MAX_CONTACTS 3
+# define MAX_CONTACTS 8
 
 class	PhoneBook
 {
 private:
-	Contact	_contacts[8];
-	int 	_last;
+	Contact	_contacts[MAX_CONTACTS];
+	int 	_quant;
 
 	void	print_contacts(void) const;
 public:
-	PhoneBook();
+	PhoneBook(void);
 	~PhoneBook();
 	void	push_contacts(void);
 	void 	add(void);

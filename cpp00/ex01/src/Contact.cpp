@@ -15,10 +15,10 @@ Contact::Contact(std::string f_name, std::string l_name, std::string nick,
 	_secret = std::string(secret);
 }
 
-Contact::~Contact()
-{
-	return ;
-}
+//Contact::~Contact()
+//{
+//	return ;
+//}
 
 void Contact::display() const
 {
@@ -29,9 +29,28 @@ void Contact::display() const
 			  << _secret << '\n';
 }
 
+static void print_string(std::string str)
+{
+	std::string	output;
+	int			len;
+
+	len = str.length();
+	if (len < 11)
+	{
+		str.resize(10, 32);
+		std::cout << str << "|";
+	}
+	else
+	{
+		str.resize(9);
+		std::cout << str << ".|";
+	}
+}
+
 void Contact::print_contact(void) const
 {
-	std::cout << _first_name << '|'
-		<< _last_name << '|'
-		<< _nickname << '\n';
+	print_string(_first_name);
+	print_string(_last_name);
+	print_string(_nickname);
+	std::cout << std::endl;
 }

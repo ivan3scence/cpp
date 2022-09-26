@@ -13,10 +13,10 @@ private:
 	std::string	_phone;
 	std::string	_secret;
 public:
-	Contact();
+	Contact(void);
 	Contact(std::string f_name, std::string l_name, std::string nick,
 			std::string phone, std::string secret);
-	~Contact();
+//	~Contact();
 	void print_contact(void) const;
 	void display(void) const;
 };

@@ -1,20 +1,21 @@
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook()
+PhoneBook::PhoneBook(void)
 {
-	_last = -1;
+	_quant = 0;
 }
 
 PhoneBook::~PhoneBook()
-{}
+{
+	return ;
+}
 
 void PhoneBook::push_contacts(void)
 {
-	for (int i = 0; i < MAX_CONTACTS; ++i)
+	for (int i = 0; i < MAX_CONTACTS - 1; ++i)
 	{
-		this->_contacts[i + 1] = this->_contacts[i];
+		_contacts[i + 1] = _contacts[i];
 	}
-	this->_last = 0;
 }
 
 void PhoneBook::add(void)
@@ -35,51 +36,45 @@ void PhoneBook::add(void)
 	std::getline(std::cin, phone);
 	std::cout << "please, enter darkest secret: ";
 	std::getline(std::cin, secret);
-	if (this->_last == 0)
-		PhoneBook::push_contacts();
-	if (this->_last == -1)
-	{
-		this->_contacts[0] = Contact(f_name, l_name, nick, phone, secret);
-		this->_last = 1;
-	}
-	else
-		this->_contacts[this->_last++] = Contact(f_name, l_name, nick, phone,
-												 secret);
-	if (this->_last > MAX_CONTACTS)
-		this->_last = 0;
+	PhoneBook::push_contacts();
+	_contacts[0] = Contact(f_name, l_name, nick, phone, secret);
+	++_quant;
+	if (_quant > MAX_CONTACTS)
+		_quant = MAX_CONTACTS;
 }
 
 void PhoneBook::search(void) const
 {
+	std::string	ind;
 	int index;
 
 	index = -1;
-	if (this->_last == -1)
+//	last = _quant;
+	if (_quant == 0)
 	{
 		std::cout << "There are no contacts\n";
 		return ;
 	}
 	PhoneBook::print_contacts();
-	while (index < 0 || index > MAX_CONTACTS)
+	while (index < 1 || index > _quant)
 	{
 		std::cout << "Choose contact's index: ";
-		std::cin >> index;
-		if (index < 0 || index > MAX_CONTACTS)
-			std::cout << "Index must be in range [0;7]\n";
+		std::getline(std::cin, ind);
+		std::stringstream(ind) >> index;
+		if (index < 1 || index > _quant)
+			std::cout << "Index must be in range [1;" << _quant << "]\n";
 	}
-	this->_contacts[index].display();
+	_contacts[index - 1].display();
 }
 
 void PhoneBook::print_contacts(void) const
 {
-	int	last;
+//	int	last;
 
-	last = this->_last;
-	if (this->_last == 0)
-		last = MAX_CONTACTS;
-	for (int i = 0; i < last; ++i)
+//	last = _quant;
+	for (int i = 0; i < _quant; ++i)
 	{
-		std::cout << i << '|';
-		this->_contacts[i].print_contact();
+		std::cout << i + 1 << "        |";
+		_contacts[i].print_contact();
 	}
 }
