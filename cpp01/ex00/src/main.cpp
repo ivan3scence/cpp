@@ -12,24 +12,11 @@ int	main(void)
 	delete z2;
 	z2 = &z3;
 	z2->announce();
-	for (int i=0; i > -1; ++i)
+	for (int i=0; i < 1000; ++i)
 	{
 		std::cout << i << ": ";
 		z2 = newZombie("zombie2");
-		z2 = newZombie("zombie2");
-		z2 = newZombie("zombie2");
-		z2 = newZombie("zombie2");
-		z2 = newZombie("zombie2");
-		z2 = newZombie("zombie2");
-		z2 = newZombie("zombie2");
-		z2 = newZombie("zombie2");
-		z2 = newZombie("zombie2");
-		z2 = newZombie("zombie2");
-		z2 = newZombie("zombie2");
-		z2 = newZombie("zombie2");
-		z2 = newZombie("zombie2");
-		z2 = newZombie("zombie2");
-		z2 = newZombie("zombie2");
+		delete z2;
 		randomChump("zombie");
 	}
 }
