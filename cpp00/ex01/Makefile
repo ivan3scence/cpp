@@ -1,42 +1,31 @@
-CC = c++
+CC			= c++ -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
+RM			= rm -rf
+NAME		= ./phonebook
+NAME_SHORT	= phonebook
 
-FLAGS = -std=c++98 -Wall -Werror -Wextra -g -fsanitize=address
+INCS_DIR	= include
+MAIN_INC	= -I$(INCS_DIR)
+INCS		= $(shell find $(INCS_DIR) -type f -name "*.hpp")
 
-NAME = phone_book
+SRCS_DIR 	= src
+SRCS		= $(shell find $(SRCS_DIR) -type f -name "*.cpp")
 
-SRC = Contact.cpp PhoneBook.cpp main.cpp
+OBJS		= $(SRCS:.cpp=.o)
 
-SRC_DIR = ./src/
+%.o			: %.cpp
+			$(CC) $(MAIN_INC) -c $< -o $@
 
-INC_DIR = ./include/
+all			: $(NAME)
 
-INC = Contract.hpp PhoneBook.hpp
+$(NAME)		: $(OBJS) $(INCS)
+			$(CC) $(OBJS) $(MAIN_INC) -o $(NAME)
 
-SOURCES = $(addprefix ${SRC_DIR}, ${SRC})
+clean		:
+			$(RM) $(OBJS)
 
-INCLUDES = $(addprefix ${INC_DIR}, ${INC})
+fclean		: clean
+			$(RM) $(NAME)
 
-BUILDIR = ./obj/
+re			: fclean all
 
-OBJS = ${SRC:.cpp=.o}
-
-REMOVE = rm -rf
-
-all:	${BUILDIR} ${NAME}
-
-${NAME}:	${SOURCES}
-	${CC} ${FLAGS} -I ${INC_DIR} $? -o $@
-
-${BUILDIR}:
-	mkdir $@
-
-%.o:	%.cpp ${INCLUDES} Makefile
-	${CC} ${FLAGS} -I ${INC_DIR} -c $< -o $@
-
-clean:
-	${REMOVE} ${OBJS}
-	
-fclean:	clean
-	${REMOVE} ${NAME}
-
-re: fclean all
+.PHONY		: all clean fclean re

@@ -12,10 +12,11 @@ PhoneBook::~PhoneBook()
 
 void PhoneBook::push_contacts(void)
 {
-	for (int i = 0; i < MAX_CONTACTS - 1; ++i)
-	{
-		_contacts[i + 1] = _contacts[i];
-	}
+	if (_quant == MAX_CONTACTS)
+		--_quant;
+	for (int i = _quant; i > 0 ; --i)
+		_contacts[i] = _contacts[i - 1];
+	++_quant;
 }
 
 void PhoneBook::add(void)
@@ -38,9 +39,6 @@ void PhoneBook::add(void)
 	std::getline(std::cin, secret);
 	PhoneBook::push_contacts();
 	_contacts[0] = Contact(f_name, l_name, nick, phone, secret);
-	++_quant;
-	if (_quant > MAX_CONTACTS)
-		_quant = MAX_CONTACTS;
 }
 
 void PhoneBook::search(void) const
@@ -49,7 +47,6 @@ void PhoneBook::search(void) const
 	int index;
 
 	index = -1;
-//	last = _quant;
 	if (_quant == 0)
 	{
 		std::cout << "There are no contacts\n";
@@ -60,6 +57,8 @@ void PhoneBook::search(void) const
 	{
 		std::cout << "Choose contact's index: ";
 		std::getline(std::cin, ind);
+		if (std::cin.eof())
+			std::exit(0);
 		std::stringstream(ind) >> index;
 		if (index < 1 || index > _quant)
 			std::cout << "Index must be in range [1;" << _quant << "]\n";
@@ -69,9 +68,6 @@ void PhoneBook::search(void) const
 
 void PhoneBook::print_contacts(void) const
 {
-//	int	last;
-
-//	last = _quant;
 	for (int i = 0; i < _quant; ++i)
 	{
 		std::cout << i + 1 << "        |";

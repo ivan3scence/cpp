@@ -14,7 +14,7 @@ int main(void)
 			book.add();
 		else if (line == "SEARCH")
 			book.search();
-		else if (line == "EXIT")
+		else if (std::cin.eof() || line == "EXIT")
 			std::exit(0);
 		else
 			std::cout << "program knows only:\n\tADD\n\tSEARCH\n\tEXIT\n";

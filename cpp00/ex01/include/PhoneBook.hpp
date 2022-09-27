@@ -23,7 +23,6 @@ public:
 	void	push_contacts(void);
 	void 	add(void);
 	void	search(void) const;
-	int 	exit(void);
 };
 
 #endif
