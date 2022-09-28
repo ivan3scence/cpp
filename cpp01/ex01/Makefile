@@ -1,7 +1,7 @@
 CC			= c++ -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
 RM			= rm -rf
 NAME		= ./horde
-NAME_SHORT	= zombie
+NAME_SHORT	= horde
 
 INCS_DIR	= ./include/
 MAIN_INC	= -I$(INCS_DIR)
