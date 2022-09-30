@@ -11,6 +11,7 @@ public:
 	HumanB(void);
 	HumanB(std::string name);
 	HumanB(std::string name, Weapon &weapon);
+	HumanB(std::string name, Weapon *weapon);
 	~HumanB(void);
 
 	const std::string	&getType(void) const;

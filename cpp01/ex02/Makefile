@@ -1,4 +1,4 @@
-CC			= c++ -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
+CC			= c++ -Wall -Wextra -Werror -std=c++98
 RM			= rm -rf
 NAME		= ./ref
 NAME_SHORT	= ref
