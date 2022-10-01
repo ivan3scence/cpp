@@ -2,6 +2,7 @@
 #define __FIXED_H__
 
 # include <iostream>
+# include <cmath>
 
 class Fixed
 {
@@ -13,24 +14,22 @@ public:
 	Fixed(const int integer);
 	Fixed(const float flt);
 
-	std::ostream	&opereator << (const std::ostream &os, const Fixed &fix) const;
-	Fixed	&operator = (const Fixed &fix)
-	{
-		std::cout << "Copy assignment operator called\n";
-		if (this == &fix)
-            return *this;
-		_integer = fix.getRawBits();
-		return (*this);
-	}
+
+	Fixed	&operator = (const Fixed &fix);
+
 
 	int			getRawBits(void) const;
 	void		setRawBits(int const raw);
+	int			getInteger(void) const;
+	int			getFr_bit(void) const;
 	float		toFloat(void) const;
 	int			toInt(void) const;
-
+	int			shift(float flt) const;
+	float		shift_back(float frl) const;
 private:
-	static int	_num;
+	static int	_fr_bit;
 	int			_integer;
 };
 
+std::ostream	&operator << (std::ostream &os, const Fixed &fix);
 #endif
