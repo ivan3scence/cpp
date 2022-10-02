@@ -24,8 +24,6 @@ public:
 	int			getFr_bit(void) const;
 	float		toFloat(void) const;
 	int			toInt(void) const;
-	int			shift(float flt) const;
-	float		shift_back(float frl) const;
 private:
 	static int	_fr_bit;
 	int			_integer;

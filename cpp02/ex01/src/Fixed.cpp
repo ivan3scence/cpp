@@ -10,26 +10,13 @@ Fixed::Fixed(void) : _integer(0)
 
 Fixed::Fixed(const int integer) : _integer(integer << _fr_bit)
 {
+	std::cout << "Int constructor called\n";
 	return ;
 }
 
-int		Fixed::shift(float flt) const
+Fixed::Fixed(const float flt) : _integer((int)roundf(flt * (1 << _fr_bit)))
 {
-	std::cout << "lol " << flt << "\n";
-	while (flt - (int)flt > 0)
-		flt *= 10;
-	std::cout << "lol2 " << flt << std::endl;
-	return ((int)flt);
-}
-
-Fixed::Fixed(const float flt)
-{
-	int		zel = 0;
-
-	_integer = 0;
-	zel |= (int)flt << _fr_bit;
-	_integer = zel | (Fixed::shift(flt - (int)flt));
-	std::cout << _integer << std::endl;
+	std::cout << "Float constructor called\n";
 	return ;
 }
 
@@ -56,28 +43,15 @@ void	Fixed::setRawBits(int const raw)
 	_integer = raw;
 }
 
-float	Fixed::shift_back(float frl) const
-{
-	while (frl >= 1)
-		frl /= 10.0;
-	return (frl);
-}
-
 float	Fixed::toFloat(void) const
 {
-	float	flt;
 
-	flt = (_integer >> _fr_bit) + shift_back(_integer << (32 - _fr_bit)
-			>> (32 - _fr_bit));
-	return (flt);
+	return ((float)_integer / (1 << _fr_bit));
 }
 
 int	Fixed::toInt(void) const
 {
-	int ret;
-
-	ret = _integer >> _fr_bit;
-	return (ret);
+	return (_integer >> _fr_bit);
 }
 
 int		Fixed::getInteger(void) const
