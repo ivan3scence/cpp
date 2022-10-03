@@ -1,4 +1,4 @@
-CC			= c++ -Wall -Wextra -Werror -std=c++98
+CC			= c++ -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
 RM			= rm -rf
 NAME		= ./bsp
 NAME_SHORT	= bsp

@@ -4,42 +4,36 @@ int	Fixed::_fr_bit=8;
 
 Fixed::Fixed(void) : _integer(0)
 {
-	//std::cout << "Default constructor called\n";
 	return ;
 }
 
 Fixed::Fixed(const int integer) : _integer(integer << _fr_bit)
 {
-	//std::cout << "Int constructor called\n";
 	return ;
 }
 
 Fixed::Fixed(const float flt) : _integer((int)roundf(flt * (1 << _fr_bit)))
 {
-	//std::cout << "Float constructor called\n";
 	return ;
 }
 
 Fixed::~Fixed(void)
 {
-	//std::cout << "Destructor called\n";
+    return ;
 }
 
 Fixed::Fixed(const Fixed &fix)
 {
-	//std::cout << "Copy constructor called\n";
 	*this = fix;
 }
 
 int		Fixed::getRawBits(void) const
 {
-//	std::cout << "getRawBits member function called\n";
 	return (_integer);
 }
 
 void	Fixed::setRawBits(int const raw)
 {
-	//std::cout << "setRawBits member function called\n";
 	_integer = raw;
 }
 
@@ -66,7 +60,6 @@ int		Fixed::getFr_bit(void) const
 
 Fixed	&Fixed::operator = (const Fixed &fix)
 {
-	//std::cout << "Copy assignment operator called\n";
 	if (this == &fix)
         return *this;
 	_integer = fix.getRawBits();
