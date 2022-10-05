@@ -1,37 +1,100 @@
-#include "Fixed.hpp"
+#include "ClapTrap.hpp"
 
-int	Fixed::_fr_bit=8;
-
-Fixed::Fixed(void) : _integer(0)
+ClapTrap::ClapTrap(void)
 {
-	return ;
 	std::cout << "Default constructor called\n";
-}
-
-Fixed::Fixed(int integer) : _integer(integer)
-{
+	_hp = 10;
+	_ep = 10;
+	_ad = 0;
 	return ;
 }
 
-Fixed::~Fixed(void)
+ClapTrap::ClapTrap(std::string name) : _name(name)
+{
+	std::cout << "String constructor called\n";
+	_hp = 10;
+	_ep = 10;
+	_ad = 0;
+	return ;
+}
+
+ClapTrap::ClapTrap(std::string name, int hp,
+					int ep, int ad) : _name(name), _hp(hp), _ep(ep), _ad(ad)
+{
+	std::cout << "Ints constructor called\n";
+	return ;
+}
+
+ClapTrap::~ClapTrap(void)
 {
 	std::cout << "Destructor called\n";
 }
 
-Fixed::Fixed(const Fixed &fix)
+ClapTrap::ClapTrap(const ClapTrap &ct)
 {
-	std::cout << "Copy constructor called\n";
-	*this = fix;
+	*this = ct;
 }
 
-int		Fixed::getRawBits(void) const
+void	ClapTrap::setHp(int hp)
 {
-	std::cout << "getRawBits member function called\n";
-	return (_integer);
+	std::cout << "setHp member function called\n";
+	_hp = hp;
 }
 
-void	Fixed::setRawBits(int const raw)
+void	ClapTrap::setEp(int ep)
 {
-	std::cout << "setRawBits member function called\n";
-	_integer = raw;
+	std::cout << "setHp member function called\n";
+	_ep = ep;
+}
+
+void	ClapTrap::setAd(int ad)
+{
+	std::cout << "setHp member function called\n";
+	_ad = ad;
+}
+
+int		ClapTrap::getHp(void) const
+{
+	std::cout << "getHp member function called\n";
+	return (_hp);
+}
+
+int		ClapTrap::getEp(void) const
+{
+	std::cout << "getEp member function called\n";
+	return (_ep);
+}
+
+int		ClapTrap::getAd(void) const
+{
+	std::cout << "getAd member function called\n";
+	return (_ad);
+}
+
+std::string	ClapTrap::getName(void) const
+{
+	std::cout << "getName member function called\n";
+	return (_name);
+}
+
+ClapTrap	&ClapTrap::operator = (const ClapTrap &ct)
+{
+	std::cout << "Copy assignment operator called\n";
+	_hp = ct.getHp();
+	_ep = ct.getEp();
+	_ad = ct.getAd();
+	_name = ct.getName();
+	return (*this);
+}
+
+void	ClapTrap::attack(const std::string &target)
+{
+	std::cout << "ClapTrap " << _name << " attacks "<< target << std::endl;
+	_ep -= _ad;
+}
+
+void	ClapTrap::takeDamage(unsigned int amount)
+{
+	std::cout << "causing " << _ad << " points of damage!\n";
+	_hp -= amount;
 }

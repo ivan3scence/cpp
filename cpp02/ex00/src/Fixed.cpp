@@ -4,8 +4,8 @@ int	Fixed::_fr_bit=8;
 
 Fixed::Fixed(void) : _integer(0)
 {
-	return ;
 	std::cout << "Default constructor called\n";
+	return ;
 }
 
 Fixed::Fixed(int integer) : _integer(integer)

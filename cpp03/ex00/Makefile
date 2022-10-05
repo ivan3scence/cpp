@@ -1,18 +1,18 @@
 CC			= c++ -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
 RM			= rm -rf
-NAME		= ./fixed
-NAME_SHORT	= fixed
+NAME		= ./ct
+NAME_SHORT	= ct
 
 INCS_DIR	= ./include/
 MAIN_INC	= -I$(INCS_DIR)
 
-INC			= Fixed.hpp
+INC			= ClapTrap.hpp
 
 INCS		= $(addprefix ${INCS_DIR}, ${INC})
 
 SRCS_DIR 	= ./src/
 
-SRC			= main.cpp Fixed.cpp
+SRC			= main.cpp ClapTrap.cpp
 
 SRCS		= $(addprefix ${SRCS_DIR}, ${SRC})
 
