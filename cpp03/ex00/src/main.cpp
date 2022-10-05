@@ -1,9 +1,9 @@
 #include "ClapTrap.hpp"
 
 int main( void ) {
-	ClapTrap a;
+	ClapTrap a = ClapTrap("Anton");
 	ClapTrap b( a );
-	ClapTrap c;
+	ClapTrap c("Colya");
 	c = b;
 
 	std::cout << a.getHp() << std::endl;

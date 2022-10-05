@@ -89,12 +89,23 @@ ClapTrap	&ClapTrap::operator = (const ClapTrap &ct)
 
 void	ClapTrap::attack(const std::string &target)
 {
-	std::cout << "ClapTrap " << _name << " attacks "<< target << std::endl;
+	if (_ep < _ad)
+	{
+		std::cout << "no Energy points (" << _ep << ") for attack!n";
+		return ;
+	}
 	_ep -= _ad;
+	std::cout << "ClapTrap " << _name << " attacks "<< target << std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
+	if (_hp < (int)amount)
+	{
+		amount = _hp;
+		_hp = 0;
+	}
+	else
+		_hp -= amount;
 	std::cout << "causing " << _ad << " points of damage!\n";
-	_hp -= amount;
 }
