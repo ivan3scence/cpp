@@ -1,22 +1,21 @@
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
+
+# define ARRAY 100
 
 int main( void ) {
-	ClapTrap a = ClapTrap("Anton");
-	ScavTrap aa = ScavTrap("Jojo");
-	ClapTrap b( a );
-	ScavTrap bb( aa );
-	ScavTrap c("Colya", 1, 2, 3);
-	c = bb;
+	Animal	*animals[ARRAY];
 
-	std::cout << aa.getHp() << std::endl;
-	std::cout << b.getEp() << std::endl;
-	std::cout << c.getAd() << std::endl;
 
-	b.attack("Colya");
-	c.takeDamage(b.getAd());
-	aa.attack("Anton");
-	a.takeDamage(aa.getAd());
-	aa.guardGate();
+	for (int i=0; i < ARRAY / 2; ++i)
+	{
+		animals[i] = new Dog();
+		animals[ARRAY - 1 - i] = new Cat();
+	}
+	for (int i=0; i < ARRAY / 2; ++i)
+	{
+		delete animals[i];
+		delete animals[ARRAY - 1 - i];
+	}
 	return 0;
 }
