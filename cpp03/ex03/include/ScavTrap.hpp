@@ -9,7 +9,6 @@ class ScavTrap : virtual public ClapTrap
 {
 public:
 	ScavTrap(void);
-	ScavTrap(std::string name, int hp, int ep, int ad);
 	ScavTrap(const ScavTrap &st);
 	~ScavTrap(void);
 	ScavTrap(std::string name);

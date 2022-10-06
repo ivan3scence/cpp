@@ -15,7 +15,6 @@ class ClapTrap
 {
 public:
 	ClapTrap(void);
-	ClapTrap(std::string name, int hp, int ep, int ad);
 	ClapTrap(const ClapTrap &ct);
 	~ClapTrap(void);
 	ClapTrap(std::string name);
@@ -33,6 +32,7 @@ public:
 	void		setHp(int hp);
 	void		setEp(int ep);
 	void		setAd(int ad);
+
 protected:
 	std::string	_name;
 	int			_hp;

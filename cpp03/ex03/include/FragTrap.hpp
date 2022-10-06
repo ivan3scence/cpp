@@ -9,8 +9,7 @@ class FragTrap : virtual public ClapTrap
 {
 public:
 	FragTrap(void);
-	FragTrap(std::string name, int hp, int ep, int ad);
-	FragTrap(const FragTrap &st);
+	FragTrap(const FragTrap &ft);
 	~FragTrap(void);
 	FragTrap(std::string name);
 	FragTrap	&operator = (const FragTrap &ct);

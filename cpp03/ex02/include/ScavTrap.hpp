@@ -17,12 +17,6 @@ public:
 
 	void		attack(const std::string &targer);
 	void		guardGate(void);
-
-protected:
-	std::string	_name;
-	int			_hp;
-	int			_ep;
-	int			_ad;
 };
 
 #endif
