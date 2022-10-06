@@ -2,7 +2,7 @@
 
 ClapTrap::ClapTrap(void)
 {
-	std::cout << "Default constructor called\n";
+	std::cout << "Default " << GREEN << "constructor" << END << " called\n";
 	_hp = 10;
 	_ep = 10;
 	_ad = 0;
@@ -11,7 +11,7 @@ ClapTrap::ClapTrap(void)
 
 ClapTrap::ClapTrap(std::string name) : _name(name)
 {
-	std::cout << "String constructor called\n";
+	std::cout << "String " << GREEN << "constructor" << END<< " called\n";
 	_hp = 10;
 	_ep = 10;
 	_ad = 0;
@@ -21,13 +21,13 @@ ClapTrap::ClapTrap(std::string name) : _name(name)
 ClapTrap::ClapTrap(std::string name, int hp,
 					int ep, int ad) : _name(name), _hp(hp), _ep(ep), _ad(ad)
 {
-	std::cout << "Ints constructor called\n";
+	std::cout << "Ints " << GREEN << "constructor" << END<< " called\n";
 	return ;
 }
 
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << "Destructor called\n";
+	std::cout << RED << "Destructor" << END << " called\n";
 }
 
 ClapTrap::ClapTrap(const ClapTrap &ct)
