@@ -2,6 +2,8 @@
 #define __ANIMAL_H__
 
 # include <iostream>
+# include "Brain.hpp"
+
 # define RED "\x1B[31m"
 # define GREEN "\x1B[32m"
 # define YELLOW "\x1B[33m"
@@ -16,7 +18,7 @@ class Animal
 public:
 	Animal(void);
 	Animal(const Animal &animal);
-	~Animal(void);
+	virtual ~Animal(void);
 	Animal(std::string type);
 	Animal	&operator = (const Animal &animal);
 

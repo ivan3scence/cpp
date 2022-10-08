@@ -1,11 +1,10 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
 
-# define ARRAY 100
+# define ARRAY 2
 
 int main( void ) {
 	Animal	*animals[ARRAY];
-
 
 	for (int i=0; i < ARRAY / 2; ++i)
 	{
@@ -17,5 +16,17 @@ int main( void ) {
 		delete animals[i];
 		delete animals[ARRAY - 1 - i];
 	}
-	return 0;
+
+	Cat *cat=new Cat();
+	Dog *dog=new Dog();
+	Brain	br;
+
+	*cat = *dog;
+	std::cout << "Cat's idea (\"";
+	cat->getBrain().print();
+	std::cout << "\") == Dog's idea (\"";
+	dog->getBrain().print();
+	std::cout << "\");\n";
+	delete cat;
+	delete dog;
 }

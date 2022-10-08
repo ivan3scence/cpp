@@ -15,16 +15,16 @@ class Brain
 {
 public:
 	Brain(void);
+	Brain(std::string name);
 	Brain(const Brain &Brain);
 	~Brain(void);
 	Brain(std::string ids[100]);
 	Brain	&operator = (const Brain &brain);
 
-	std::string		*getIdeas(void) const;
-	virtual void	makeSound(void) const;
-	void			setIdeas(const std::string ids[100]);
+	void		setIdeas(const std::string ids[100]);
+	void 		print(void) const;
 protected:
-	std::string			ideas[100];
+	std::string	ideas[100];
 };
 
 #endif
