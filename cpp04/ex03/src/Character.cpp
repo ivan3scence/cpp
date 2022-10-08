@@ -7,7 +7,8 @@ Character::~Character(void)
 
 Character::Character(std::string const &n) : _name(n)
 {
-	return ;
+	for (int i=0; i < 4; ++i)
+		_materias[i] = 0;
 }
 
 Character::Character(const Character &character)
@@ -40,8 +41,12 @@ void	Character::equip(AMateria *m)
 	for (int i=0; i < 4; ++i)
 	{
 		if (!_materias[i])
+		{
 			_materias[i] = m;
+			return ;
+		}
 	}
+	std::cout << "no avaliable slots in character!\n";
 }
 
 bool	Character::ifExists(int idx)
@@ -64,7 +69,7 @@ void	Character::unequip(int idx)
 
 void	Character::use(int idx, ICharacter &target)
 {
-	if (!Character::ifExists(idx))
+	if (Character::ifExists(idx))
 		_materias[idx]->use(target);
 	else
 		std::cout << "trying to use unexisting slot!\n";
