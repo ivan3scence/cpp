@@ -6,13 +6,13 @@ NAME_SHORT	= brain
 INCS_DIR	= ./include/
 MAIN_INC	= -I$(INCS_DIR)
 
-INC			= AAnimal.hpp Dog.hpp Cat.hpp WrongAnimal.hpp WrongCat.hpp Brain.hpp
+INC			= AAnimal.hpp Dog.hpp Cat.hpp Brain.hpp
 
 INCS		= $(addprefix ${INCS_DIR}, ${INC})
 
 SRCS_DIR 	= ./src/
 
-SRC			= main.cpp AAnimal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
+SRC			= main.cpp AAnimal.cpp Dog.cpp Cat.cpp Brain.cpp
 
 SRCS		= $(addprefix ${SRCS_DIR}, ${SRC})
 

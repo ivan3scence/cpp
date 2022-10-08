@@ -1,5 +1,5 @@
-#ifndef __AANIMAL_H__
-#define __AANIMAL_H__
+#ifndef __ANIMAL_H__
+#define __ANIMAL_H__
 
 # include <iostream>
 # include "Brain.hpp"
@@ -16,19 +16,17 @@
 class AAnimal
 {
 public:
-//	AAnimal(void);
-//	virtual AAnimal(const AAnimal &animal);
-	virtual ~AAnimal(void) =0;
-//	AAnimal(std::string type);
-//	virtual AAnimal	&operator = (const AAnimal &animal);
+	AAnimal(void);
+	AAnimal(const AAnimal &animal);
+	virtual ~AAnimal(void);
+	AAnimal(std::string type);
+	AAnimal	&operator = (const AAnimal &animal);
 
-//	std::string		getType(void) const;
-	virtual void	makeSound(void) const;
-//	void			setType(const std::string type);
+	std::string		getType(void) const;
+	virtual void	makeSound(void) const =0;
+	void			setType(const std::string type);
 protected:
 	std::string			_type;
 };
-
-AAnimal::~AAnimal(void) {}
 
 #endif

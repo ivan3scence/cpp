@@ -1,38 +1,26 @@
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
-#include "DiamondTrap.hpp"
+#include "AMateria.hpp"
+#include "Character.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
+#include "MateriaSource.hpp"
+
+# define ARRAY 2
 
 int main( void ) {
-	ClapTrap a = ClapTrap("Anton");
-	ScavTrap aa = ScavTrap("Jojo");
-	FragTrap bob = FragTrap("Bob");
-	DiamondTrap	dimon = DiamondTrap("Dimon");
-
-	std::cout << std::endl << a.getAd() << std::endl;
-	std::cout << aa.getHp() << std::endl;
-	std::cout << bob.getEp() << std::endl << std::endl;
-	std::cout << dimon.getHp() << std::endl;
-	std::cout << dimon.getEp() << std::endl;
-	std::cout << dimon.getAd() << std::endl << std::endl;
-
-	bob.attack("Colya");
-	a.takeDamage(bob.getAd());
-	aa.attack("Anton");
-	a.takeDamage(aa.getAd());
-	aa.guardGate();
-	bob.attack("Jojo");
-	aa.takeDamage(bob.getAd());
-	bob.highFivesGuys();
-
-	dimon.attack("bob");
-	bob.takeDamage(dimon.getAd());
-	dimon.attack("bob");
-	bob.takeDamage(dimon.getAd());
-	dimon.attack("bob");
-	bob.takeDamage(dimon.getAd());
-	dimon.attack("bob");
-	bob.takeDamage(dimon.getAd());
-	dimon.whoAmI();
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	ICharacter* me = new Character("me");
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	ICharacter* bob = new Character("bob");
+	me->use(0, *bob);
+	me->use(1, *bob);
+	delete bob;
+	delete me;
+	delete src;
 	return 0;
 }

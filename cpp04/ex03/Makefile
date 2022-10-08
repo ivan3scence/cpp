@@ -1,18 +1,19 @@
-CC			= c++ -Wall -Wextra -Werror -Wshadow -Wno-shadow -std=c++98 -fsanitize=address -g
+CC			= c++ -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
 RM			= rm -rf
-NAME		= ./dt
-NAME_SHORT	= dt
+NAME		= ./mat
+NAME_SHORT	= mat
 
 INCS_DIR	= ./include/
 MAIN_INC	= -I$(INCS_DIR)
 
-INC			= ClapTrap.hpp ScavTrap.hpp FragTrap.hpp DiamondTrap.hpp
+INC			= AMateria.hpp Ice.hpp Cure.hpp ICharacter.hpp Character.hpp\
+				IMateriaSource.hpp MateriaSource.hpp
 
 INCS		= $(addprefix ${INCS_DIR}, ${INC})
 
 SRCS_DIR 	= ./src/
 
-SRC			= main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
+SRC			= AMateria.cpp Ice.cpp Cure.cpp Character.cpp main.cpp MateriaSource.cpp
 
 SRCS		= $(addprefix ${SRCS_DIR}, ${SRC})
 
