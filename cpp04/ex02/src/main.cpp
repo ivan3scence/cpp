@@ -1,30 +1,32 @@
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
+
+# define ARRAY 2
 
 int main( void ) {
-	ClapTrap a = ClapTrap("Anton");
-	ScavTrap aa = ScavTrap("Jojo");
-	FragTrap bob = FragTrap("Bob");
-	FragTrap bob2 = FragTrap(bob);
-	FragTrap bob3 = FragTrap("Bob", 123, 50, 7);
-	ClapTrap b( a );
-	ScavTrap bb( aa );
-	ScavTrap c("Colya", 1, 2, 3);
-	c = bb;
-	bob = bob3;
+	AAnimal	*animals[ARRAY];
 
-	std::cout << aa.getHp() << std::endl;
-	std::cout << bob.getEp() << std::endl;
-	std::cout << c.getAd() << std::endl;
+	for (int i=0; i < ARRAY / 2; ++i)
+	{
+		animals[i] = new Dog();
+		animals[ARRAY - 1 - i] = new Cat();
+	}
+	for (int i=0; i < ARRAY / 2; ++i)
+	{
+		delete animals[i];
+		delete animals[ARRAY - 1 - i];
+	}
 
-	b.attack("Colya");
-	c.takeDamage(b.getAd());
-	aa.attack("Anton");
-	a.takeDamage(aa.getAd());
-	aa.guardGate();
-	bob.attack("Bob2");
-	bob2.takeDamage(bob.getAd());
-	bob3.highFivesGuys();
-	return 0;
+	Cat *cat=new Cat();
+	Dog *dog=new Dog();
+	Brain	br;
+
+	*cat = *dog;
+	std::cout << "Cat's idea (\"";
+	cat->getBrain().print();
+	std::cout << "\") == Dog's idea (\"";
+	dog->getBrain().print();
+	std::cout << "\");\n";
+	delete cat;
+	delete dog;
 }

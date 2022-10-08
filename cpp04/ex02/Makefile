@@ -1,18 +1,18 @@
 CC			= c++ -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
 RM			= rm -rf
-NAME		= ./ft
-NAME_SHORT	= ft
+NAME		= ./brain
+NAME_SHORT	= brain
 
 INCS_DIR	= ./include/
 MAIN_INC	= -I$(INCS_DIR)
 
-INC			= ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
+INC			= AAnimal.hpp Dog.hpp Cat.hpp WrongAnimal.hpp WrongCat.hpp Brain.hpp
 
 INCS		= $(addprefix ${INCS_DIR}, ${INC})
 
 SRCS_DIR 	= ./src/
 
-SRC			= main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
+SRC			= main.cpp AAnimal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 
 SRCS		= $(addprefix ${SRCS_DIR}, ${SRC})
 
