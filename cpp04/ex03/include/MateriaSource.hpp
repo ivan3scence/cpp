@@ -15,7 +15,7 @@ public:
 
 	void		learnMateria(AMateria*);
 	AMateria	*createMateria(std::string const & type);
-	AMateria	*getMaterias(void) const;
+	void		getMaterias(AMateria* (&to)[4]) const;
 };
 
 #endif
