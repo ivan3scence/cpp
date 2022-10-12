@@ -51,6 +51,8 @@ void	Character::equip(AMateria *m)
 
 bool	Character::ifExists(int idx)
 {
+	if (idx < 0 || idx > 3)
+		return (false);
 	if (_materias[idx])
 		return (true);
 	return (false);

@@ -41,7 +41,6 @@ void	MateriaSource::learnMateria(AMateria *mat)
 		if (!_materias[i])
 		{
 			_materias[i] = mat;
-			std::cout << mat->getType() << std::endl;
 			return ;
 		}
 	}

@@ -16,11 +16,18 @@ int main( void ) {
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
+	//me->unequip(4);
 	ICharacter* bob = new Character("bob");
 	me->use(0, *bob);
 	me->use(1, *bob);
 	delete bob;
 	delete me;
 	delete src;
+
+	//Ice	i;
+	//Ice	*jice = i.clone();
+
+	//std::cout << jice->getType();
+
 	return 0;
 }
