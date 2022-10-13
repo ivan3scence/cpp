@@ -1,4 +1,4 @@
-CC			= c++ -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g -static
+CC			= c++ -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
 RM			= rm -rf
 NAME		= ./bur
 NAME_SHORT	= bur

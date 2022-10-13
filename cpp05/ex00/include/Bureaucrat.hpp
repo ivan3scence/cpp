@@ -2,24 +2,23 @@
 # define __BUREAUCRAT_H__
 
 # include <iostream>
+# include <exception>
 
 class Bureaucrat
 {
-private:
+protected:
 	std::string	_name;
-	int					_grade;
-public:
+	int			_grade;
 	Bureaucrat(void);
+	void		_checkGrade(int grade);
+public:
 	Bureaucrat(const Bureaucrat &bur);
 	Bureaucrat(std::string const &name, int grade);
 	Bureaucrat	&operator = (Bureaucrat const &bur);
 	~Bureaucrat(void);
 
-	void				GradeTooHighException(void);
-	void				GradeTooLowException(void);
 	std::string			getName(void) const;
 	int					getGrade(void) const;
-	//void				checkGrade(int grade);
 	Bureaucrat			operator ++ (void);
 	Bureaucrat			operator ++ (int);
 	Bureaucrat			operator -- (void);
@@ -28,20 +27,23 @@ public:
 	class GradeTooHighException : public std::exception
 	{
 		public:
-			const char	*what() const throw()
+			GradeTooHighException(){}
+			virtual const char	*what(void) const _NOEXCEPT
 			{
 				return ("GradeTooHighException: Grade is too high!");
 			}
 	};
-
 	class GradeTooLowException : public std::exception
 	{
 		public:
-			const char	*what() const throw()
+			GradeTooLowException(){}
+			virtual const char	*what(void) const throw()
 			{
 				return ("GradeTooLowException: Grade is too low!");
 			}
 	};
 };
+
+std::ostream	&operator << (std::ostream &os, const Bureaucrat &bur);
 
 #endif

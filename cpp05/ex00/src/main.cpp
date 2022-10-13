@@ -1,21 +1,67 @@
 #include "Bureaucrat.hpp"
+#include <iostream>
 
-int		main(void)
+int main(void)
 {
-	Bureaucrat	bob("Bob", 13);
-	try
 	{
-		Bureaucrat	ann("Ann", 151);
+		Bureaucrat bob("Bob",50);
+		std::cout << bob;
+		Bureaucrat bob1(bob);
+		std::cout << bob1;
+		Bureaucrat bob2("tmp",150);
+		bob2 = bob;
+		std::cout << bob2;
 	}
-	catch (std::exception &e)
+	std::cout << "------------" << std::endl;
 	{
-		std::cout << e.what() << std::endl;
+		Bureaucrat jack("Jack",75);
+		std::cout << jack;
+		jack++;
+		std::cout << jack;
+		jack++;
+		std::cout << jack;
+		jack++;
+		std::cout << jack;
+		jack++;
+		std::cout << jack;
 	}
-	//Bureaucrat	vlad("Vlad", 0);
-	//
-	//std::cout << "\tname: " << bob.getName() << "\tgrade: " << bob.getGrade() << std::endl;
-	//std::cout << "\tname: " << ann.getName() << "\tgrade: " << ann.getGrade() << std::endl;
-	//std::cout << "\tname: " << vlad.getName() << "\tgrade: " << vlad.getGrade() << std::endl;
-	//vlad = bob;
-	//std::cout << "\tname: " << vlad.getName() << "\tgrade: " << vlad.getGrade() << std::endl;
+	std::cout << "------------" << std::endl;
+	{
+		Bureaucrat james("James",75);
+		std::cout << james;
+		james--;
+		std::cout << james;
+		james--;
+		std::cout << james;
+		james--;
+		std::cout << james;
+		james--;
+		std::cout << james;
+	}
+	std::cout << "------------" << std::endl;
+	{
+		try
+		{
+			Bureaucrat toto("Toto",1);
+			std::cout << toto;
+			toto++;
+			std::cout << toto;
+		}
+		catch (std::exception const & e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+	}
+	std::cout << "------------" << std::endl;
+	{
+		try
+		{
+			Bureaucrat titi("Titi",151);
+		}
+		catch (std::exception const & e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+	}
+	return (0);
 }
