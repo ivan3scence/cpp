@@ -8,11 +8,45 @@ Cast::Cast(char *string) : _string(std::string(string))
 {
 	double	val;
 
+	if (Cast::_limits(std::string(string)))
+		return ;
 	Cast::_overFlow(string);
 	val = std::atof(string);
+	if (val > INT_MAX || val < INT_MIN)
+	{
+		std::cerr << "int overflow!\n";
+		exit(1);
+	}
 	if (!val && string[0] != '0')
+	{
 		Cast::_fromChar(string[0]);
+		return ;
+	}
 	Cast::_fromDbl(val);
+}
+
+static int	which(std::string const &string)
+{
+	if (string == "inf")
+		return (0);
+	else if (string == "nan")
+		return (1);
+	return (2);
+}
+
+bool	Cast::_limits(std::string const &string)
+{
+	switch (which(string))
+	{
+		case 0:
+			_d = DBL_MAX;
+			return (1);
+		case 1:
+			_d = -DBL_MAX;
+			return (1);
+		default:
+			return (0);
+	}
 }
 
 void	Cast::_overFlow(std::string const &string)
@@ -39,13 +73,14 @@ void	Cast::_overFlow(std::string const &string)
 		|| (i - start == 10 && sign && std::strcmp(&string[start],
 		"2147483648") > 0))
 	{
-		std::cout << "int overflow!\n";
+		std::cerr << "int overflow!\n";
 		exit(1);
 	}
 }
 
 void	Cast::_fromChar(char ch)
 {
+	std::cout << "form_char\n";
 	_ch = ch;
 	_i = static_cast<int>(ch);
 	_d = static_cast<double>(ch);
@@ -58,26 +93,26 @@ void	Cast::_fromDbl(double dbl)
 	_f = static_cast<float>(dbl);
 	_i = static_cast<int>(dbl);
 	if (_d < 0 || _d > 128)
+		_ch = "\0";
+	else
 		_ch = static_cast<char>(_i);
 }
 
 void	Cast::display(void) const
 {
-	std::cout << "char: " << (_d > 0 && _d < 128 && std::isprint(_ch) ? &_ch
-				: "Non displayable")
-				<< ".\nint: " << _i << ".\nfloat: " << _f << "f.\ndouble: "
-				<< _d << ".\n";
+	std::cout.precision(1);
+	if (_d == DBL_MAX)
+		std::cout << "char: impossible.\nint: impossible.\nfloat: inff.\n"
+						"double: inf.\n";
+	else if (_d == -DBL_MAX)
+		std::cout << "char: impossible.\nint: impossible.\nfloat: nanf.\n"
+						"double: nan.\n";
+	else
+		std::cout << "char: " << (_d > 0 && _d < 128 && std::isprint(_ch[0])
+				? _ch : _d == DBL_MAX ? "impossible" : "Non displayable")
+				<< ".\nint: " << std::fixed << _i << ".\nfloat: " << _f
+				<< "f.\ndouble: " << std::fixed << _d << ".\n";
 }
-
-//int	Cast::getType(std::string const &string)
-//{
-//	double	val;
-//
-//	if (string[0].isalpha())
-//		return (CHAR);
-//	val = std::atof(string);
-//
-//}
 
 Cast::Cast(Cast const &cast)
 {
@@ -100,7 +135,7 @@ std::string	Cast::getString(void) const
 	return (_string);
 }
 
-char	Cast::getCh(void) const
+std::string	Cast::getCh(void) const
 {
 	return (_ch);
 }

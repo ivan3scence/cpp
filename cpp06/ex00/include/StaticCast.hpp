@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <cstring>
+# include <cfloat>
 
 # define CHAR 0
 # define INT 1
@@ -13,13 +14,14 @@ class Cast
 {
 protected:
 	std::string _string;
-	char 		_ch;
+	std::string	_ch;
 	int 		_i;
 	float 		_f;
 	double		_d;
 	void		_fromDbl(double dbl);
 	void		_fromChar(char ch);
 	void		_overFlow(std::string const &string);
+	bool		_limits(std::string const &string);
 	Cast(void);
 
 public:
@@ -33,7 +35,7 @@ public:
 	double		getD(void) const;
 	int			getI(void) const;
 	float		getF(void) const;
-	char		getCh(void) const;
+	std::string	getCh(void) const;
 	std::string	getString(void) const;
 };
 
