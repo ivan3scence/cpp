@@ -25,6 +25,7 @@ int main( void ) {
 	aa.guardGate();
 	bob.attack("Bob2");
 	bob2.takeDamage(bob.getAd());
+	bob2.beRepaired(5);
 	bob3.highFivesGuys();
 	return 0;
 }

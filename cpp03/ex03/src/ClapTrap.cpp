@@ -96,3 +96,13 @@ void	ClapTrap::takeDamage(unsigned int amount)
 		_hp -= amount;
 	std::cout << "causing " << amount << " points of damage!\n";
 }
+
+void	ClapTrap::beRepaired(unsigned int amount)
+{
+	if (_ep > (int)amount && _hp > 0)
+	{
+		std::cout << _name << " heals (+" << amount << " HP)"<< std::endl;
+		_hp += amount;
+		_ep -= amount;
+	}
+}

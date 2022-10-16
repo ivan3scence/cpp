@@ -33,7 +33,7 @@ public:
 	void		setHp(int hp);
 	void		setEp(int ep);
 	void		setAd(int ad);
-protected:
+private:
 	std::string	_name;
 	int			_hp;
 	int			_ep;

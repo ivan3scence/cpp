@@ -17,6 +17,7 @@ int main( void ) {
 	c.takeDamage(b.getAd());
 	aa.attack("Anton");
 	a.takeDamage(aa.getAd());
+	aa.beRepaired(1);
 	aa.guardGate();
 	return 0;
 }

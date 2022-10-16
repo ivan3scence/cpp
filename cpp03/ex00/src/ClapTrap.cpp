@@ -38,43 +38,36 @@ ClapTrap::ClapTrap(const ClapTrap &ct)
 
 void	ClapTrap::setHp(int hp)
 {
-	//std::cout << "setHp member function called\n";
 	_hp = hp;
 }
 
 void	ClapTrap::setEp(int ep)
 {
-//	std::cout << "setHp member function called\n";
 	_ep = ep;
 }
 
 void	ClapTrap::setAd(int ad)
 {
-	//std::cout << "setHp member function called\n";
 	_ad = ad;
 }
 
 int		ClapTrap::getHp(void) const
 {
-	//std::cout << "getHp member function called\n";
 	return (_hp);
 }
 
 int		ClapTrap::getEp(void) const
 {
-	//std::cout << "getEp member function called\n";
 	return (_ep);
 }
 
 int		ClapTrap::getAd(void) const
 {
-	//std::cout << "getAd member function called\n";
 	return (_ad);
 }
 
 std::string	ClapTrap::getName(void) const
 {
-	//std::cout << "getName member function called\n";
 	return (_name);
 }
 
@@ -109,4 +102,14 @@ void	ClapTrap::takeDamage(unsigned int amount)
 	else
 		_hp -= amount;
 	std::cout << "causing " << amount << " points of damage!\n";
+}
+
+void	ClapTrap::beRepaired(unsigned int amount)
+{
+	if (_ep > (int)amount && _hp > 0)
+	{
+		std::cout << _name << " heals (+" << amount << " HP)"<< std::endl;
+		_hp += amount;
+		_ep -= amount;
+	}
 }

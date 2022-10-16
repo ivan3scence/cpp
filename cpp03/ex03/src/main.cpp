@@ -34,5 +34,6 @@ int main( void ) {
 	dimon.attack("bob");
 	bob.takeDamage(dimon.getAd());
 	dimon.whoAmI();
+	dimon.beRepaired(1);
 	return 0;
 }
