@@ -10,18 +10,18 @@ class Span
 {
 private:
 	size_t				_size;
-	unsigned int		_quant;
+	size_t				_quant;
 	std::vector<int>	_vec;
+	Span(void);
 
 public:
-	Span(void);
 	Span(size_t const &size);
 	Span(Span const &span);
 	~Span(void);
 	Span operator = (Span const &span);
 
 	size_t				size(void) const;
-	unsigned int		getQuantity(void) const;
+	size_t				getSize(void) const;
 	std::vector<int>	getVector(void) const;
 	void				addNumber(int number);
 	long				shortestSpan(void) const;
@@ -29,14 +29,14 @@ public:
 	template < typename T > void	addNumbers(typename T::iterator begin,
 												typename T::iterator end);
 
-	class TooMuchNumbers : std::exception
+	class TooMuchNumbers : public std::exception
 	{
 	public:
 		virtual char const	*what(void) const throw() {
 			return ("Error! Too much numbers!");
 		}
 	};
-	class TooFewNumbers : std::exception
+	class TooFewNumbers : public std::exception
 	{
 	public:
 		virtual char const	*what(void) const throw() {

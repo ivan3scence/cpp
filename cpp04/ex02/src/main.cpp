@@ -29,4 +29,5 @@ int main( void ) {
 	std::cout << "\");\n";
 	delete cat;
 	delete dog;
+	// AAnimal a;
 }

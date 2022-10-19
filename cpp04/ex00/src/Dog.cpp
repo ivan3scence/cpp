@@ -13,7 +13,7 @@ Dog::~Dog(void)
 				<< END << " called\n";
 }
 
-Dog::Dog(const Dog &Dog)
+Dog::Dog(const Dog &Dog) : Animal(Dog.getType())
 {
 	std::cout << PURPLE << _type << END << ": Copy constructor called\n";
 	this->_type = "Dog";

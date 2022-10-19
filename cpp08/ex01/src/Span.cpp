@@ -15,21 +15,21 @@ Span	Span::operator = (Span const &span)
 {
 	if (this == &span)
 		return (*this);
-	_size = span.size();
-	_quant = span.getQuantity();
+	_size = span.getSize();
+	_quant = span.size();
 	_vec.clear();
 	_vec = span.getVector();
 	return (*this);
 }
 
-unsigned int	Span::getQuantity(void) const
+size_t	Span::getSize(void) const
 {
 	return (_quant);
 }
 
 size_t	Span::size(void) const
 {
-	return (_size);
+	return (_quant);
 }
 
 std::vector<int>	Span::getVector(void) const
@@ -47,7 +47,7 @@ void	Span::addNumber(int number)
 
 long	Span::shortestSpan(void) const
 {
-	if (_size < 2)
+	if (_quant < 2)
 		throw (TooFewNumbers());
 	long				span = LONG_MAX;
 	std::vector<int>	cp = _vec;
@@ -60,8 +60,8 @@ long	Span::shortestSpan(void) const
 
 int		Span::longestSpan(void) const
 {
-	if (_size < 2)
-		throw (TooFewNumbers());
+	if (_quant < 2)
+		throw (Span::TooFewNumbers());
 	return (*std::max_element(_vec.begin(), _vec.end())
 			- *std::min_element(_vec.begin(), _vec.end()));
 }

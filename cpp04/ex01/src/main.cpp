@@ -29,4 +29,12 @@ int main( void ) {
 	std::cout << "\");\n";
 	delete cat;
 	delete dog;
+
+	Dog dogg;
+	{
+		Dog tmp = dogg;
+	}
+	std::cout << "\n\n";
+	dogg.getBrain().print();
+	std::cout << "\n\n";
 }

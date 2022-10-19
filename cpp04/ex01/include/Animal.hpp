@@ -1,7 +1,9 @@
-#ifndef __WRONGANIMAL_H__
-#define __WRONGANIMAL_H__
+#ifndef __ANIMAL_H__
+#define __ANIMAL_H__
 
 # include <iostream>
+# include "Brain.hpp"
+
 # define RED "\x1B[31m"
 # define GREEN "\x1B[32m"
 # define YELLOW "\x1B[33m"
@@ -11,17 +13,17 @@
 # define GRAY "\x1B[90m"
 # define END "\033[0m"
 
-class WrongAnimal
+class Animal
 {
 public:
-	WrongAnimal(void);
-	WrongAnimal(const WrongAnimal &animal);
-	~WrongAnimal(void);
-	WrongAnimal(std::string type);
-	WrongAnimal	&operator = (const WrongAnimal &animal);
+	Animal(void);
+	Animal(const Animal &animal);
+	virtual ~Animal(void);
+	Animal(std::string type);
+	Animal	&operator = (const Animal &animal);
 
 	std::string		getType(void) const;
-	void			makeSound(void) const;
+	virtual void	makeSound(void) const;
 	void			setType(const std::string type);
 protected:
 	std::string			_type;

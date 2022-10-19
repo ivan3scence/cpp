@@ -13,7 +13,7 @@ Cat::~Cat(void)
 				<< END << " called\n";
 }
 
-Cat::Cat(const Cat &Cat)
+Cat::Cat(const Cat &Cat) : Animal(Cat.getType())
 {
 	std::cout << YELLOW << _type << END << ": Copy constructor called\n";
 	this->_type = "Cat";

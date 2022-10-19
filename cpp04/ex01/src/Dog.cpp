@@ -19,6 +19,7 @@ Dog::Dog(const Dog &Dog)
 {
 	std::cout << PURPLE << "Dog" << END << ": Copy constructor called\n";
 	this->_type = "Dog";
+	_brain = NULL;
 	*this = Dog;
 }
 
@@ -30,6 +31,8 @@ Brain	&Dog::getBrain(void) const
 Dog	&Dog::operator = (const Dog &animal)
 {
 	std::cout << PURPLE << "Dog" << END << ": Copy assignment operator called\n";
+	if (_brain)
+		delete _brain;
 	_brain = new Brain(animal.getBrain());
 	return (*this);
 }

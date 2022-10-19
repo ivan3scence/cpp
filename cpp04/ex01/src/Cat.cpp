@@ -19,6 +19,7 @@ Cat::Cat(const Cat &Cat)
 {
 	std::cout << YELLOW << "Cat" << END << ": Copy constructor called\n";
 	this->_type = "Cat";
+	_brain = 0;
 	*this = Cat;
 }
 
@@ -30,6 +31,8 @@ Brain	&Cat::getBrain(void) const
 Cat	&Cat::operator = (const Cat &animal)
 {
 	std::cout << YELLOW << "Cat" << END << ": Copy assignment operator called\n";
+	if (_brain)
+		delete _brain;
 	_brain = new Brain(animal.getBrain());
 	return (*this);
 }
