@@ -12,7 +12,7 @@ INCS		= $(addprefix ${INCS_DIR}, ${INC})
 
 SRCS_DIR 	= ./src/
 
-SRC			= main.cpp MutantStack.cpp
+SRC			= main.cpp
 
 SRCS		= $(addprefix ${SRCS_DIR}, ${SRC})
 

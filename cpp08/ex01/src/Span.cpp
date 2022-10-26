@@ -65,12 +65,3 @@ int		Span::longestSpan(void) const
 	return (*std::max_element(_vec.begin(), _vec.end())
 			- *std::min_element(_vec.begin(), _vec.end()));
 }
-
-template < typename T >
-void	addNumbers(typename T::iterator begin, typename T::iterator end)
-{
-	typename T::iterator	cp = begin;
-
-	while (cp != end)
-		addNumber(*(cp++));
-}

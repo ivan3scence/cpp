@@ -25,7 +25,8 @@ int main()
 		for (size_t i = 0; i < b.size(); ++i)
 			std::cout << vec[i] << std::endl;
 		std::cout << "\nshortest span: " << b.shortestSpan()
-					<< "\nlongest span: " << b.longestSpan() << std::endl;
+					<< "\nlongest span: " << b.longestSpan()
+					<< std::endl << std::endl << std::endl;
 	}
 
 	{
@@ -34,18 +35,12 @@ int main()
 	
 		for (int i=0; i < SIZE + 1; ++i)
 			vec.push_back(i);
-		try
-		{
-			b.addNumbers< std::vector<int> >(vec.begin(), vec.end());
-		}
-		catch (const std::exception &e)
-		{
-			std::cout << e.what() << std::endl;
-		}
+		b.addNumbers< std::vector<int> >(vec.begin(), vec.end());
 		vec = b.getVector();
 		for (size_t i = 0; i < b.size(); ++i)
 			std::cout << vec[i] << std::endl;
 	}
+	
 	{
 		Span	c(5);
 
