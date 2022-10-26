@@ -24,7 +24,7 @@ Bureaucrat::Bureaucrat(std::string const &name, int grade) : _name(name)
 	_grade = grade;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &bur)
+Bureaucrat::Bureaucrat(const Bureaucrat &bur) : _name(bur.getName())
 {
 	*this = bur;
 }
@@ -34,7 +34,6 @@ Bureaucrat	&Bureaucrat::operator = (const Bureaucrat &bur)
 	if (this == &bur)
 		return (*this);
 	_grade = bur.getGrade();
-	_name = bur.getName();
 	return (*this);
 }
 

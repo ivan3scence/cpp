@@ -36,7 +36,6 @@ public:
 	class TooHighException : public std::exception
 	{
 	public:
-		TooHighException(){}
 		virtual const char	*what(void) const _NOEXCEPT
 		{
 			return ("TooHighException: Grade is too high!");
@@ -46,7 +45,6 @@ public:
 	class TooLowException : public std::exception
 	{
 	public:
-		TooLowException(){}
 		virtual const char	*what(void) const throw()
 		{
 			return ("TooLowException: Grade is too low!");

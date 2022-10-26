@@ -20,18 +20,23 @@ Cast::Cast(char *string) : _string(std::string(string))
 	if (!val && string[0] != '0')
 	{
 		Cast::_fromChar(string[0]);
+		Cast::display();
 		return ;
 	}
 	Cast::_fromDbl(val);
+	Cast::display();
 }
 
 static int	which(std::string const &string)
 {
-	if (string == "inf")
+	if (string == "inf" || string == "+inf"
+		|| string == "inff" || string == "+inff")
 		return (0);
-	else if (string == "nan")
+	else if (string == "nan" || string == "nanf")
 		return (1);
-	return (2);
+	else if (string == "-inf" || string == "-inff")
+		return (2);
+	return (3);
 }
 
 bool	Cast::_limits(std::string const &string)
@@ -39,10 +44,16 @@ bool	Cast::_limits(std::string const &string)
 	switch (which(string))
 	{
 		case 0:
-			_d = DBL_MAX;
+			std::cout << "char: impossible.\nint: impossible.\nfloat: inff.\n"
+							"double: inf.\n";
 			return (1);
 		case 1:
-			_d = -DBL_MAX;
+			std::cout << "char: impossible.\nint: impossible.\nfloat: nanf.\n"
+							"double: nan.\n";
+			return (1);
+		case 2:
+			std::cout << "char: impossible.\nint: impossible.\nfloat: -inff.\n"
+							"double: -inf.\n";
 			return (1);
 		default:
 			return (0);
@@ -80,7 +91,6 @@ void	Cast::_overFlow(std::string const &string)
 
 void	Cast::_fromChar(char ch)
 {
-	std::cout << "form_char\n";
 	_ch = ch;
 	_i = static_cast<int>(ch);
 	_d = static_cast<double>(ch);
@@ -101,14 +111,7 @@ void	Cast::_fromDbl(double dbl)
 void	Cast::display(void) const
 {
 	std::cout.precision(1);
-	if (_d == DBL_MAX)
-		std::cout << "char: impossible.\nint: impossible.\nfloat: inff.\n"
-						"double: inf.\n";
-	else if (_d == -DBL_MAX)
-		std::cout << "char: impossible.\nint: impossible.\nfloat: nanf.\n"
-						"double: nan.\n";
-	else
-		std::cout << "char: " << (_d > 0 && _d < 128 && std::isprint(_ch[0])
+	std::cout << "char: " << (_d > 0 && _d < 128 && std::isprint(_ch[0])
 				? _ch : _d == DBL_MAX ? "impossible" : "Non displayable")
 				<< ".\nint: " << std::fixed << _i << ".\nfloat: " << _f
 				<< "f.\ndouble: " << std::fixed << _d << ".\n";

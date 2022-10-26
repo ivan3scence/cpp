@@ -10,10 +10,10 @@ class Form;
 class Bureaucrat
 {
 protected:
-	std::string	_name;
-	int			_grade;
+	const std::string	_name;
+	int					_grade;
 	Bureaucrat(void);
-	void		_checkGrade(int grade);
+	void				_checkGrade(int grade);
 public:
 	Bureaucrat(const Bureaucrat &bur);
 	Bureaucrat(std::string const &name, int grade);

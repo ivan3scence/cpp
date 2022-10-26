@@ -8,13 +8,20 @@ int	main(void)
 	Form	*someForm;
 
 	someForm = bOb.makeForm("PresidentialPardonForm", "country");
-	std::cout << someForm->getName() << std::endl;
+	std::cout << std::endl << someForm->getName() << std::endl;
 	std::cout << someForm->getMinGrade() << std::endl;
 	std::cout << someForm->getExecGrade() << std::endl;
-	std::cout << someForm->getSignature() << std::endl;
+	std::cout << someForm->getSignature() << std::endl << std::endl;
 	Bureaucrat	vanO("Ivan", 8);
-	vanO.signForm(*someForm);
-	//someForm->beSigned(vanO);
-	std::cout << someForm->getSignature() << std::endl;
+	try
+	{
+		vanO.signForm(*someForm);
+		std::cout << someForm->getSignature() << std::endl;
+		vanO.executeForm(*someForm);
+	}
+	catch (std::exception &e)
+	{
+		e.what();
+	}
 	delete someForm;
 }

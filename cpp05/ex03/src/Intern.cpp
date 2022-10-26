@@ -41,10 +41,10 @@ Form	*Intern::makeForm(std::string const &name, std::string const &target) const
 	{
 		if (str[i] == name)
 		{
-			std::cout << "Intern creates!\n";
+			std::cout << "Intern creates " << str[i] << "!\n";
 			return ((cs[i])(target));
 		}
 	}
-	std::cout << "Intern does not create!\n";
+	std::cout << "Intern does not create " << name << "!\n";
 	return (NULL);
 }
