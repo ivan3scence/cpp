@@ -12,7 +12,7 @@ int main(void)
 	for (int i=0; i < SIZE; ++i)
 		std::cout << a[i] << ":";
 	std::cout << std::endl;
-	for (int i=0; i <= SIZE; ++i)
+	for (int i=-1; i <= SIZE; ++i)
 	{
 		try {
 			std::cout << a[i] << ":";
@@ -21,4 +21,6 @@ int main(void)
 			std::cerr << e.what();
 		}
 	}
+
+	Array<double>	b;
 }
